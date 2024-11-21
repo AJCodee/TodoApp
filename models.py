@@ -4,7 +4,7 @@ from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey 
 
 class Todos(Base):
-    __tabelname__ = 'Todos'
+    __tablename__ = 'Todos'
     
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String)
