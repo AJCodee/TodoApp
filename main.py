@@ -5,10 +5,13 @@ from fastapi import FastAPI, Depends, HTTPException, status, Path
 import models
 from models import Todos
 from database import enigne, SessionLocal
+from routers import auth
 
 app = FastAPI()
 
 models.Base.metadata.create_all(bind=enigne)
+
+app.include_router(auth.router)
 
 def get_db():
     db = SessionLocal()
