@@ -35,7 +35,7 @@ async def get_user(user: user_dependency, db: db_dependecy):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Athentication Failed')
     return db.query(Users).filter(Users.id == user.get('id')).first()
 
-
+# This is an endpoint for changing password of the user that is currently logged in.
 @router.put("/password", status_code=status.HTTP_204_NO_CONTENT)
 async def change_password(user: user_dependency, db: db_dependecy, user_verification: UserVerication):
     if user is None:
