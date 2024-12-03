@@ -17,7 +17,7 @@ class Users(Base):
 
 
 class Todos(Base):
-    __tablename__ = 'Todos'
+    __tablename__ = 'todos'
     
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String)

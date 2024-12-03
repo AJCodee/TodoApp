@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, status, Path
 from models import Todos
 from database import SessionLocal
 from .auth import get_current_user
+from database import engine
 
 router = APIRouter()
 
@@ -42,6 +43,7 @@ async def read_todo(user: user_dependency, db: db_dependecy, todo_id: int = Path
 
 @router.post("/todo", status_code=status.HTTP_201_CREATED)
 async def create_todo(user: user_dependency, db: db_dependecy, todo_request: TodoRequest):
+    print(f"Todos endpoint is using database: {engine.url}")
     
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Authentication Failed')
@@ -49,6 +51,8 @@ async def create_todo(user: user_dependency, db: db_dependecy, todo_request: Tod
     
     db.add(todo_model)
     db.commit()
+    db.refresh(todo_model)
+    return todo_model
     
 @router.put("/todo/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def update_todo(user: user_dependency,
