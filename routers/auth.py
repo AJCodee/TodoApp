@@ -52,6 +52,7 @@ def authenticate_user(username: str, password:str, db):
         return False
     return user
 
+# Function for creating a token.
 def create_access_token(username: str, user_id: int, role: str, expires_delta: timedelta):
     encode = {'sub': username, 'id': user_id, 'role': role}
     expires = datetime.now(timezone.utc) + expires_delta
@@ -72,6 +73,7 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail='Could not validate user.')
 
+# Create a new user endpoint.
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_user(db: db_dependecy, create_user_request: CreateUserRequest):
     """Create a new user."""
@@ -87,7 +89,7 @@ async def create_user(db: db_dependecy, create_user_request: CreateUserRequest):
     
     db.add(create_user_model)
     db.commit()
-    
+   
 @router.post("/token/", response_model=Token)
 async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
                                  db: db_dependecy):
