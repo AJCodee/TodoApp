@@ -7,6 +7,7 @@ app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
 
+# Adding all the different routers to activate them.
 app.include_router(auth.router)
 app.include_router(todos.router)
 app.include_router(admin.router)
