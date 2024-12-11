@@ -24,3 +24,6 @@ def override_get_db():
         db.close()
         
 app.dependency_override[get_db] = override_get_db
+
+# Havent needed to add .. before any of my imports as it has been finding the files. 
+# However, If i start getting import issues then I need to refactor to do ..main instead of just main.
