@@ -10,3 +10,5 @@ alembic
 pytest
 httpx
 pytest-asyncio
+aiofiles
+jinja2
