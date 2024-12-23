@@ -8,7 +8,7 @@ app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
 
-templates = Jinja2Templates(directory="TodoApp/templates")
+templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
 def test(request: Request):
