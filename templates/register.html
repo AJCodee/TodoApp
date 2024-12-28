@@ -5,7 +5,7 @@
     <div class="card-header">Register</div>
   </div>
   <div class="card-body">
-    <form id="registerForm">
+    <form id="registerForm" method="POST">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label>Email</label>
@@ -36,7 +36,7 @@
           <input
             type="text"
             class="form-control"
-            name="phonenumber"
+            name="phone_number"
             autocomplete="phone_number"
             required
           />
@@ -45,7 +45,7 @@
       <div class="form-group">
         <label>Password</label>
         <input
-          type="text"
+          type="password"
           class="form-control"
           name="password"
           autocomplete="new-password"
@@ -55,7 +55,7 @@
       <div class="form-group">
         <label>Verify Password</label>
         <input
-          type="text"
+          type="password"
           class="form-control"
           name="password2"
           autocomplete="new-password"
