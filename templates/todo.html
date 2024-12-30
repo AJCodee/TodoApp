@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="card text-center">
-    <div class="card-header">Your Todo's</div>
+    <div class="card-header">Your Todo's!</div>
     <div class="card-body">
       <h5 class="card-title">List of your todo's!</h5>
       <p class="card-text">
@@ -11,9 +11,11 @@
 
       <table class="table table-hover">
         <thead>
-          <th scope="col">#</th>
-          <th scope="col">Info</th>
-          <th scope="col">Actions</th>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Info</th>
+            <th scope="col">Actions</th>
+          </tr>
         </thead>
         <tbody>
           {% for todo in todos %} {% if todo.complete == False %}
