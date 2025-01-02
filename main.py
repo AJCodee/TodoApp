@@ -15,6 +15,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 def test(request: Request):
     return RedirectResponse(url="/todos/todo-page", status_code=status.HTTP_302_FOUND)
 
+# function to clarify server is healthy.
 @app.get("/healthy")
 async def health_check():
     return {"status": "Server is healthy"}
