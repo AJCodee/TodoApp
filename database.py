@@ -5,7 +5,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # This line is used to connect to the postgresql / pgadmin database.
-SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:passpost@localhost/TodoApplicationDatabase'
+#SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:passpost@localhost/TodoApplicationDatabase'
+
+
+SQLALCHEMY_DATABASE_URL = 'postgresql://avnadmin:AVNS_TOEMvgcDE3O-Iu08Zqm@pg-3f4ef746-deployment-database.g.aivencloud.com:10732/defaultdb?sslmode=require'
+
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
