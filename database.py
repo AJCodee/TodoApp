@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 #SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:passpost@localhost/TodoApplicationDatabase'
 
 # Path to the downloaded CA certificate from Aiven
-SSL_CERT_PATH = '/path/to/ca.pem'
+SSL_CERT_PATH = '/absolute/path/to/ca.pem'
 
 SQLALCHEMY_DATABASE_URL = 'postgresql://avnadmin:AVNS_TOEMvgcDE3O-Iu08Zqm@pg-3f4ef746-deployment-database.g.aivencloud.com:10732/TodoApplicationDatabase?sslmode=require'
 
