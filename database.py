@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 # Path to the downloaded CA certificate from Aiven
 SSL_CERT_PATH = '/path/to/ca.pem'
 
-SQLALCHEMY_DATABASE_URL = 'postgresql://avnadmin:AVNS_TOEMvgcDE3O-Iu08Zqm@pg-3f4ef746-deployment-database.g.aivencloud.com:10732/defaultdb?sslmode=require'
+SQLALCHEMY_DATABASE_URL = 'postgresql://avnadmin:AVNS_TOEMvgcDE3O-Iu08Zqm@pg-3f4ef746-deployment-database.g.aivencloud.com:10732/TodoApplicationDatabase?sslmode=require'
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"sslmode": "require", "sslrootcert": SSL_CERT_PATH})
