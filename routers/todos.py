@@ -31,7 +31,8 @@ class TodoRequest(BaseModel):
     description: str = Field(min_length=3, max_length=150)
     priority: int = Field(gt=0, lt=6)
     complete: bool
-    
+
+# Function to redirect us to the login-page.
 def redirect_to_login():
     redirect_response = RedirectResponse(url="/auth/login-page", status_code=status.HTTP_302_FOUND)
     redirect_response.delete_cookie(key="access_token")
