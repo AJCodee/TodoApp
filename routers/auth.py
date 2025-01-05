@@ -44,7 +44,7 @@ def get_db():
     finally:
         db.close()
         
-db_dependecy = Annotated[Session, Depends(get_db)]
+db_dependency = Annotated[Session, Depends(get_db)]
 
 templates = Jinja2Templates(directory="templates")
 
@@ -90,7 +90,7 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]):
 
 # Create a new user endpoint.
 @router.post("/", status_code=status.HTTP_201_CREATED)
-async def create_user(db: db_dependecy, create_user_request: CreateUserRequest):
+async def create_user(create_user_request: CreateUserRequest, db: db_dependency):
     """Create a new user."""
     create_user_model = Users(
         email = create_user_request.email,
@@ -108,7 +108,7 @@ async def create_user(db: db_dependecy, create_user_request: CreateUserRequest):
    
 @router.post("/token", response_model=Token)
 async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
-                                 db: db_dependecy):
+                                 db: db_dependency):
     """Login a user and return an access token."""
     user = authenticate_user(form_data.username, form_data.password, db)
     if not user:

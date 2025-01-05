@@ -16,7 +16,6 @@ class Users(Base):
     role = Column(String)
     phone_number = Column(String)
 
-
 class Todos(Base):
     __tablename__ = 'todos'
     

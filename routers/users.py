@@ -19,25 +19,25 @@ def get_db():
     finally:
         db.close()
         
-db_dependecy = Annotated[Session, Depends(get_db)]
+db_dependnecy = Annotated[Session, Depends(get_db)]
 user_dependency = Annotated[dict, Depends(get_current_user)]
 # Code for hashing a user password for security.
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 # Class to dealing with a password change.
-class UserVerication(BaseModel):
+class UserVerification(BaseModel):
     password: str
     new_password: str = Field(min_length=6)  
 
 @router.get("/", status_code=status.HTTP_200_OK)
-async def get_user(user: user_dependency, db: db_dependecy):
+async def get_user(user: user_dependency, db: db_dependnecy):
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Athentication Failed')
     return db.query(Users).filter(Users.id == user.get('id')).first()
 
 # This is an endpoint for changing password of the user that is currently logged in.
 @router.put("/password", status_code=status.HTTP_204_NO_CONTENT)
-async def change_password(user: user_dependency, db: db_dependecy, user_verification: UserVerication):
+async def change_password(user: user_dependency, db: db_dependnecy, user_verification: UserVerification):
     if user is None:
         raise HTTPException(status_code=401, detail= 'Authentication Failed')
     user_model = db.query(Users).filter(Users.id == user.get('id')).first()
@@ -49,7 +49,7 @@ async def change_password(user: user_dependency, db: db_dependecy, user_verifica
     
 # Endpoint for a user to change the phone number.
 @router.put("/phonenumber/{phone_number}", status_code=status.HTTP_204_NO_CONTENT)
-async def change_phone_number(user: user_dependency, db: db_dependecy, phone_number: str):
+async def change_phone_number(user: user_dependency, db: db_dependnecy, phone_number: str):
     if user is None:
         raise HTTPException(status_code=401, detail='Authentication Failed')
     user_model = db.query(Users).filter(Users.id == user.get('id')).first()
