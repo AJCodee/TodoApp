@@ -17,7 +17,7 @@ def test(request: Request):
 
 # function to clarify server is healthy.
 @app.get("/healthy")
-async def health_check():
+def health_check():
     return {"status": "Server is healthy"}
 
 # Adding all the different routers to activate them.
