@@ -8,7 +8,10 @@ import os
 
 load_dotenv()
 # Get variables from envirmoment
+<<<<<<< HEAD
 # Code to hide your personal details for database connection. 
+=======
+>>>>>>> 1fdf800 (Added a .env file and template for database info)
 username = os.getenv('DB_USERNAME')
 password = os.getenv('DB_PASSWORD')
 db_name = os.getenv('DB_NAME')
