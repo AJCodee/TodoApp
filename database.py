@@ -8,6 +8,7 @@ import os
 
 load_dotenv()
 # Get variables from envirmoment
+# Code to hide your personal details for database connection. 
 username = os.getenv('DB_USERNAME')
 password = os.getenv('DB_PASSWORD')
 db_name = os.getenv('DB_NAME')
