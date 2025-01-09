@@ -10,13 +10,16 @@ from passlib.context import CryptContext # type: ignore
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import jwt, JWTError
 from fastapi.templating import Jinja2Templates
+import os
+from dotenv import load_dotenv
 
 router = APIRouter(
     prefix='/auth',
     tags=['auth'],
 )
 
-SECRET_KEY = 'XyI6UW2rt18TiYOjHSVGsfkZNApzhbKC'
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
 ALGORITHM = 'HS256'
 
 # Code for hashing a user password for security.
