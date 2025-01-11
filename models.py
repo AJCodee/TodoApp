@@ -3,6 +3,7 @@
 from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey 
 
+# Define the models for the tables in the database
 class Users(Base):
     __tablename__ = 'users'
     
